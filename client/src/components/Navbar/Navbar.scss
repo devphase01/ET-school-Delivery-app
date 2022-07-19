@@ -1,0 +1,42 @@
+@use "../../scss/index" as *;
+
+.app__navbar {
+  width: 100%;
+  height: 100px;
+
+  background-color: #000;
+}
+
+.app__navbar-links {
+  @include flex(flex-start, center, row);
+
+  width: 1400px;
+  height: 100%;
+
+  margin: 0 auto;
+
+  .app__navbar-link {
+    @include font(20, 500, white);
+  }
+
+  .app__navbar-link.active {
+    position: relative;
+    &:after {
+      content: "";
+
+      width: 100%;
+      height: 2px;
+
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+
+      background: white;
+    }
+  }
+
+  span {
+    margin: 0 2rem;
+    @include font(20, 600, white);
+  }
+}

@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
 import './App.scss';
-import { Navbar } from './components';
 import Coupons from './pages/Coupons';
 import History from './pages/History';
 
@@ -10,8 +9,7 @@ import ShopingCart from './pages/ShopingCart';
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
+    <div className="app">
       <Routes>
         <Route path="/" element={<Shop />}></Route>
         <Route path="/cart" element={<ShopingCart />}></Route>
