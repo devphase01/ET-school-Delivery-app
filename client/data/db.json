@@ -1,0 +1,18 @@
+{
+  "shopping-cart": [],
+  "shops": [
+    {
+      "shop": "Mc Donnalz",
+      "products": [
+        {
+          "name": "Humburger",
+          "price": 5
+        },
+        {
+          "name": "Land-Sandwich",
+          "price": 3.50
+        }
+      ]
+    }
+  ]
+}
