@@ -5,10 +5,11 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
-import { setupStore } from './app/store';
+import { getAmount } from './app/reducers/Cart';
+import { store } from './app/store';
 import Layout from './components/Layout/Layout';
 
-const store = setupStore();
+store.dispatch(getAmount());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -1,0 +1,45 @@
+@use '../../scss/index' as *;
+
+.app__cart__product {
+  box-shadow: 0 0 20px $box-shadow;
+  border-radius: 20px 20px 0 0;
+
+  width: 100%;
+
+  padding: 20px;
+
+  @include flex(space-between, center, row);
+  gap: 2rem;
+}
+
+.app__cart__product-image {
+  img {
+    width: 300px;
+    height: 150px;
+
+    object-fit: cover;
+    border-radius: 15px;
+  }
+}
+
+.app__cart__product-content {
+  @include flex(flex-start, center, column);
+  gap: 1rem;
+}
+
+.app__cart__product-setcount {
+  @include flex(space-between, center, row);
+  gap: 1rem;
+  box-shadow: 0 0 20px $box-shadow;
+  border: 1px solid #efefef;
+
+  border-radius: 10px;
+
+  padding: 5px 10px;
+
+  user-select: none;
+
+  button {
+    cursor: pointer;
+  }
+}

@@ -1,8 +1,7 @@
 {
-  "shopping-cart": [],
   "shops": [
     {
-      "name": "Mc Donnald",
+      "name": "McDonnald's",
       "products": [
         {
           "name": "Humburger",
@@ -26,15 +25,17 @@
       "products": [
         {
           "name": "Chicken",
-          "icon": "",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_p490vKtmX0xwK6NCZOA_OcSWQeR947SEeg&usqp=CAU",
           "price": 5
         },
         {
           "name": "Coca-Cola",
-          "icon": "",
+          "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTezrSkE86tfgysAw6hZlpKWKU0m_FDUUuWN_NDuCXTVsMf-xUCudN7THNlyZLourHBnFM&usqp=CAU",
           "price": 3.50
         }
       ]
     }
-  ]
+  ],
+  
+  "cart": []
 }

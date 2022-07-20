@@ -1,30 +1,35 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveMenu } from '../../app/reducers/ProductMenu';
+import { productApi } from '../../app/service/ProductService';
 import './Sidebar.scss';
 
 const Sidebar = () => {
-  const activeMenu = useSelector(state => state.ProductMenuReducer.activeMenu);
+  const activeMenu = useSelector(state => state.menu.activeMenu);
   const dispatch = useDispatch();
 
-  const menuItems = ["McDonnald's", "CMD", "Crabbsburg", "LaCoffee"];
+  const {data: shops, isLoading, error} = productApi.useGetShopsQuery();
 
   return (
     <div className="app__sidebar">
       <div className="app__sidebar-menu">
         <h2>Shops:</h2>
-        <ul>
-          {menuItems.map(item => (
+        {isLoading && <div>Loading...</div>}
+
+        {shops && <ul>
+          {shops.map(shop => (
             <li
-              key={item}
-              className={`app__sidebar-menu-link ${activeMenu === item ? "active" : ""}`}
-              onClick={() => dispatch(setActiveMenu(item))}
+              key={shop.name}
+              className={`app__sidebar-menu-link ${activeMenu === shop.name ? "active" : ""}`}
+              onClick={() => dispatch(setActiveMenu(shop.name))}
             >
               <span>
-                {item}
+                {shop.name}
               </span>
             </li>
           ))}
-        </ul>
+        </ul>}
+
+        {error && <div>{error}</div>}
       </div>
     </div>
   )

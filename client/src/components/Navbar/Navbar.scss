@@ -19,10 +19,24 @@
 
   .app__navbar-link {
     @include font(20, 500, black);
+    position: relative;
+    z-index: 2;
+
+    .app__cart-amount {
+      position: absolute;
+      top: -25px;
+      right: -60px;
+      z-index: 1;
+
+      background: black;
+      border-radius: 50%;
+      padding: 5px 10px;
+
+      color: white;
+    } 
   }
 
   .app__navbar-link.active {
-    position: relative;
     &:after {
       content: "";
 
