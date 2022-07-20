@@ -6,6 +6,7 @@
 }
 
 @mixin font($font-size, $font-weight, $color) {
+  font-family: "Montserrat", sans-serif;
   font-size: $font-size + px;
   font-weight: $font-weight;
   

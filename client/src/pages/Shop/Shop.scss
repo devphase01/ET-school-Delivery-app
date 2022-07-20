@@ -1,0 +1,6 @@
+@use '../../scss/index' as *;
+
+.app__shop {
+  @include flex(flex-start, flex-start, row);
+  gap: 2rem; 
+}

@@ -1,10 +1,23 @@
 import React from 'react';
 
+import { ProductCard } from '../';
+
 import './ProductContainer.scss';
 
 const ProductContainer = () => {
   return (
-    <div>ProductContainer</div>
+    <div className="app__product-container">
+      <div className="app__product-container-cards">
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+      </div>
+    </div>
   )
 }
 

@@ -4,7 +4,9 @@
   width: 100%;
   height: 100px;
 
-  background-color: #000;
+  box-shadow: 0 0 20px $box-shadow;
+
+  margin-bottom: 2rem;
 }
 
 .app__navbar-links {
@@ -16,7 +18,7 @@
   margin: 0 auto;
 
   .app__navbar-link {
-    @include font(20, 500, white);
+    @include font(20, 500, black);
   }
 
   .app__navbar-link.active {
@@ -31,12 +33,12 @@
       bottom: -10px;
       left: 0;
 
-      background: white;
+      background: black;
     }
   }
 
   span {
     margin: 0 2rem;
-    @include font(20, 600, white);
+    @include font(20, 600, black);
   }
 }

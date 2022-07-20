@@ -1,18 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
 
 import './App.scss';
-import Coupons from './pages/Coupons';
-import History from './pages/History';
 
-import Shop from './pages/Shop';
-import ShopingCart from './pages/ShopingCart';
+import { Cart, Shop, History, Coupons } from './pages';
 
 const App = () => {
   return (
     <div className="app">
       <Routes>
         <Route path="/" element={<Shop />}></Route>
-        <Route path="/cart" element={<ShopingCart />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
         
         {/* Later */}
         <Route path="/coupons" element={<Coupons />}></Route>
