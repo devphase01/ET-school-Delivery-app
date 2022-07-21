@@ -36,6 +36,8 @@ const Cart = () => {
     
     if(userInfoValidate && filterProducts.length > 0) {
       await createOrder({userInfo: userInfo, products: filterProducts, amount: cartTotalAmount});
+
+      localStorage.setItem("cartItems", JSON.stringify([]));
   
       dispatch(resetCart());
       dispatch(resetUserInfo());
