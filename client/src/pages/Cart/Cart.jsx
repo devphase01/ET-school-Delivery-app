@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Cart.scss';
 import { addToCart, decreaseCart, getAmount, resetCart } from '../../app/reducers/Cart';
 import { resetUserInfo } from '../../app/reducers/UserOrder';
+import { toast } from 'react-toastify';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -41,8 +42,20 @@ const Cart = () => {
   
       dispatch(resetCart());
       dispatch(resetUserInfo());
+
+      toast.success(`The order is successfuly registered.`, {
+        position: "bottom-left",
+        autoClose: 900,
+        delay: 0
+      });
   
       navigate("/");
+    } else {
+      toast.warning(`Oops, you missed something =(`, {
+        position: "bottom-left",
+        autoClose: 1500,
+        delay: 0
+      });
     }
   }
 

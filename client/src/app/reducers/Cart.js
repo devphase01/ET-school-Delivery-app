@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const initialState = {
   cartItems: localStorage.getItem("cartItems") 
@@ -16,9 +17,21 @@ const sliceCart = createSlice({
 
       if (productIndex >= 0) {
         state.cartItems[productIndex].cartQuantity += 1;
+
+        toast.info(`${action.payload.name} incremented by 1`, {
+          position: "bottom-left",
+          autoClose: 900,
+          delay: 0
+        });
       } else {
         const tempProduct = { ...action.payload, cartQuantity: 1 };
         state.cartItems.push(tempProduct);
+
+        toast.success(`${action.payload.name} is added to cart.`, {
+          position: "bottom-left",
+          autoClose: 900,
+          delay: 0
+        });
       }
 
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
@@ -29,9 +42,21 @@ const sliceCart = createSlice({
 
       if (state.cartItems[productIndex].cartQuantity > 1) {
         state.cartItems[productIndex].cartQuantity -= 1;
+
+        toast.warning(`${action.payload.name} is decremented by 1.`, {
+          position: "bottom-left",
+          autoClose: 900,
+          delay: 0
+        });
       } else if (state.cartItems[productIndex].cartQuantity === 1) {
         const updatedCartItems = state.cartItems.filter(item => item.name !== action.payload.name);
         state.cartItems = updatedCartItems;
+
+        toast.error(`${action.payload.name} is deleted from cart.`, {
+          position: "bottom-left",
+          autoClose: 900,
+          delay: 0
+        });
       }
 
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
