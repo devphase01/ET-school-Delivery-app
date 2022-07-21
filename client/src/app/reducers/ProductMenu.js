@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  activeMenu: "McDonnald's"
+  activeMenu: localStorage.getItem("activeMenu") 
+  ? JSON.parse(localStorage.getItem("activeMenu")) 
+  : "McDonnald's"
 }
 
 const sliceProductMenu = createSlice({
@@ -10,6 +12,7 @@ const sliceProductMenu = createSlice({
   reducers: {
     setActiveMenu: (state, action) => {
       state.activeMenu = action.payload;
+      localStorage.setItem("activeMenu", JSON.stringify(state.activeMenu));
     }
   }
 });

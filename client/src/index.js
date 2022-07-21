@@ -13,11 +13,11 @@ import Layout from './components/Layout/Layout';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <Provider store={store}>
+  <Provider store={store}>
+    <BrowserRouter>
       <Layout>
         <App />
       </Layout>
-    </Provider>
-  </BrowserRouter>
+    </BrowserRouter>
+  </Provider>
 );

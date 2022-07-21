@@ -13,28 +13,20 @@ import { addToCart, decreaseCart, getAmount, resetCart } from '../../app/reducer
 import { resetUserInfo } from '../../app/reducers/UserOrder';
 
 const Cart = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const cartAmount = useSelector(state => state.cart.cartTotalAmount);
+  const { activeMenu } = useSelector(state => state.menu);
   const { userInfo } = useSelector(state => state.order);
+  const { cartTotalAmount, cartItems } = useSelector(state => state.cart);
+
   const [createOrder] = productApi.useCreateOrderMutation();
 
-  const dispatch = useDispatch();
-
-  const products = useSelector(state => state.cart.cartItems);
-  const { activeMenu } = useSelector(state => state.menu);
-
-
-  const decreaceCartHandler = (product) => {
-    dispatch(decreaseCart(product));
-  }
-
-  const increaseCartHandler = (product) => {
-    dispatch(addToCart(product));     
-  }
+  const decreaceCartHandler = (product) => dispatch(decreaseCart(product));
+  const increaseCartHandler = (product) => dispatch(addToCart(product));     
 
   const submitOrderHandler = async () => {
-    const filterProducts = products.filter(product => product.activeMenu === activeMenu);
+    const filterProducts = cartItems.filter(product => product.activeMenu === activeMenu);
 
     const userInfoValidate = 
       userInfo.name.length > 0 &&
@@ -42,8 +34,8 @@ const Cart = () => {
       userInfo.phone.length > 0 &&
       userInfo.address.length > 0;
     
-    if(userInfoValidate && products.length > 0) {
-      await createOrder({userInfo: userInfo, products: filterProducts, amount: cartAmount});
+    if(userInfoValidate && filterProducts.length > 0) {
+      await createOrder({userInfo: userInfo, products: filterProducts, amount: cartTotalAmount});
   
       dispatch(resetCart());
       dispatch(resetUserInfo());
@@ -53,18 +45,18 @@ const Cart = () => {
   }
 
   useEffect(() => {
-    const filterByMenu = products.filter(product => product.activeMenu === activeMenu);
+    const filterByMenu = cartItems.filter(product => product.activeMenu === activeMenu);
     dispatch(getAmount(filterByMenu));
-  }, [dispatch, products, activeMenu]);
+  }, [dispatch, cartItems, activeMenu]);
 
   return (
     <div className="app__cart">
       <div className="app__cart-content">
         <InputForm />
-        <CartProducts products={products} decreaceCartHandler={decreaceCartHandler} increaseCartHandler={increaseCartHandler} />
+        <CartProducts products={cartItems} decreaceCartHandler={decreaceCartHandler} increaseCartHandler={increaseCartHandler} />
       </div>
       <div className="app__cart-submit">
-        <button onClick={() => submitOrderHandler()}>Pay {cartAmount}$</button>
+        <button onClick={() => submitOrderHandler()}>Pay {cartTotalAmount}$</button>
       </div>
     </div>
   )
