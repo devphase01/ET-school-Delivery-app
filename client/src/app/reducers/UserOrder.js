@@ -26,7 +26,10 @@ const sliceUserOrder = createSlice({
       state.userInfo.address = action.payload;
     },
     resetUserInfo: (state) => {
-      state.userInfo = {}
+      state.userInfo.name = "";
+      state.userInfo.email = "";
+      state.userInfo.phone = "";
+      state.userInfo.address = "";
     }
   }
 });
