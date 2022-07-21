@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, getAmount } from '../../app/reducers/Cart';
 
 import './ProductCard.scss';
@@ -8,9 +8,14 @@ import './ProductCard.scss';
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
 
+  const { activeMenu } = useSelector(state => state.menu);
+  const { cartItems } = useSelector(state => state.cart);
+
   const addCartHandler = () => {
-    dispatch(addToCart(product));
-    dispatch(getAmount());
+    dispatch(addToCart({...product, activeMenu}));
+
+    const filterByMenu = cartItems.filter(item => item.activeMenu === activeMenu);
+    dispatch(getAmount(filterByMenu));
   }
 
   return (

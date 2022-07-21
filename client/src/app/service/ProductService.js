@@ -25,11 +25,11 @@ export const productApi = createApi({
       providesTags: "Cart"
     }),
 
-    addToCart: build.mutation({
-      query: (product) => ({
-        url: "/cart",
+    createOrder: build.mutation({
+      query: (order) => ({
+        url: "/order",
         method: "POST",
-        body: product
+        body: order
       }),
       invalidatesTags: "Cart"
     })

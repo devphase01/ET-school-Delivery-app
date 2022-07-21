@@ -1,11 +1,13 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { productApi } from './service/ProductService';
-import ProductMenuReducer from './reducers/ProductMenu';
+import productMenuReducer from './reducers/ProductMenu';
 import cartReducer from './reducers/Cart';
+import userOrderReducer from './reducers/UserOrder'; 
 
 const rootReducer = combineReducers({
+  order: userOrderReducer,
   cart: cartReducer,
-  menu: ProductMenuReducer,
+  menu: productMenuReducer,
   [productApi.reducerPath]: productApi.reducer
 });
 
