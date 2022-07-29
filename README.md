@@ -9,7 +9,7 @@ Hi there! This is a delivery app that helps users get their favourite food in th
 <ul>
   <li>Clone this repository</li>
   <li>Switch to "client" folder.</li>
-  <li>Install node_module: <code> npm install </code>
+  <li>Install node_modules: <code> npm install </code>
   <li>Run json server: <code> json-server --watch ./data/db.json --port 5000</code></li>
   <li>Run app: <code> npm start </code> </li>
   <li>Enjoy <code>!important</code></li>  
